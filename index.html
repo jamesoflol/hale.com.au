@@ -1,22 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<style>
-		body{
-			margin: 0;
-			overflow: hidden;
-		}
-		img{
-			width: 100%;
-			min-width: 520px;
-			margin-top: calc(-20vw + 50px);
-		}
-	</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            /* overflow: hidden; */
+        }
+        img[src="dog1.jpg"].dog {
+            width: calc(94vw + 29vh);
+            height: calc(76vh + 66vw);
+            object-fit: cover;
+        }
+        img[src="dog2.jpg"].dog {
+            width: 100%;
+            height: calc(94vh + 29vw);
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
-	<div>
-		<img src="flops.jpg">
-	</div>
+    <script type="text/javascript">
+        dogs = [
+            "dog1.jpg",
+            "dog2.jpg"
+            ];
+
+        function setDogNumRandom() {
+            return Math.floor(Math.random() * (dogs.length));
+        }
+        dogNum = setDogNumRandom();
+
+        document.body.innerHTML = '<img class="dog">';
+        dogElement = document.getElementsByClassName('dog')[0];
+
+        function displayRandomDog() {
+            dogNum = setDogNumRandom();
+            dogElement.src = dogs[dogNum];
+        }
+        function displayNextDog() {
+            dogNum += 1;
+            dogElement.src = dogs[dogNum];
+        }
+        
+        displayRandomDog();
+
+        // setInterval(function() {
+        //     displayNextDog();
+        // }, 5000);
+    </script>
+    <noscript>
+        <img class="dog" src="dog1.jpg">
+    </noscript>
 </body>
 </html>
